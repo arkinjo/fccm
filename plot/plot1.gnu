@@ -5,14 +5,17 @@ set grid
 gau(x,m) = (1.0/sqrt(2*pi))*exp(-0.5*(x-m)**2)
 rho(x) = (1000*gau(x,-5) + gau(x, 5))/gau(10,5)
 set xrange [-10:10]
+
 set out "twoclust.pdf"
 set log y
+set ytics format "%3g"
 set xlabel "x"
 set ylabel "density (arbitrarily scaled)"
 set sample 1000
 plot rho(x) t ''
 
 unset log y
+set ytics format "%6.1f"
 set ylabel "Membership function"
 set yrange [-0.1:1.18]
 
