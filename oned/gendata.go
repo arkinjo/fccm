@@ -48,23 +48,25 @@ func UpdateMemFuncF(data []float64, c0, c1 float64) ([]float64, []float64, []flo
 // Fuzzy-Crisp
 func UpdateMemFuncFC(data []float64, c0, c1 float64) ([]float64, []float64, []float64, []float64) {
 	var u0, u1, dist0, dist1 []float64
-	a0 := 0.5
-	a1 := 0.5
+	a0 := 1.0
+	a1 := 1.0
+	b0 := 1.0
+	b1 := 1.0
 
 	var tu0, tu1 float64
 
 	for _, d := range data {
 		d0 := (d - c0) * (d - c0)
 		d1 := (d - c1) * (d - c1)
-		dc := (1.0 + a0 + a1) / (a0/d0 + a1/d1)
+		dc := (1.0 + a0/b0 + a1/b1) / (a0/d0 + a1/d1)
 
-		if d0 < dc && d1 < dc {
-			tu0 = a0 * (dc/d0 - 1)
-			tu1 = a1 * (dc/d1 - 1)
-		} else if d0 < dc {
+		if d0/b0 < dc && d1/b0 < dc {
+			tu0 = a0 * (dc/d0 - 1/b0)
+			tu1 = a1 * (dc/d1 - 1/b1)
+		} else if d0/b0 < dc {
 			tu0 = 1.0
 			tu1 = 0.0
-		} else if d1 < dc {
+		} else if d1/b1 < dc {
 			tu0 = 0.0
 			tu1 = 1.0
 		} else {
