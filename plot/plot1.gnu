@@ -27,3 +27,14 @@ set out "egfcc.pdf"
 p "< grep Data1 example.dat | sort -n -k 3" u 3:4 t 'u_1(x)' w l \
  ,'' u 3:5 t 'u_2(x)' w l
 
+set xlabel "Step"
+set ylabel "Cluster center"
+set xrange [0:21]
+set yrange [-7:7]
+set out "egfcmCenter.pdf"
+p "< grep Step0 example.dat" u 2:4 t 'v_1' w lp \
+ ,'' u 2:5 t 'v_2' w lp
+
+set out "egfccmCenter.pdf"
+p "< grep Step1 example.dat" u 2:4 t 'v_1' w lp \
+ ,'' u 2:5 t 'v_2' w lp
