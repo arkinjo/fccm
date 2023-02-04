@@ -45,7 +45,7 @@ func UpdateMemFuncF(data []float64, c0, c1 float64) ([]float64, []float64, []flo
 	return dist0, dist1, u0, u1
 }
 
-// Fuzzy-Crisp
+// Hybrid Fuzzy-Crisp
 func UpdateMemFuncFC(data []float64, c0, c1 float64) ([]float64, []float64, []float64, []float64) {
 	var u0, u1, dist0, dist1 []float64
 	a0 := 1.0
